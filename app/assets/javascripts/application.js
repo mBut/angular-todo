@@ -19,4 +19,6 @@
 //= require angular-resource
 //= require angular-route
 
-//= require_tree .
+//= require todo
+//= require_tree ./controllers
+//= require_tree ./services
