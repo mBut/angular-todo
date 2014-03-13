@@ -25,6 +25,7 @@ gem 'angularjs-rails', '~> 1.2.14'
 
 group :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
