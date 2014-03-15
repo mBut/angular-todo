@@ -28,7 +28,6 @@
       }
     }
 
-
     a {
       text-decoration: none;
       display: block;
@@ -53,14 +52,14 @@
 
   #todos_list {
     float: left;
-    width: 480px;
+    width: 500px;
     padding: 0 5px;
 
     form {
       margin: 0;
 
       input#new-task {
-        width: 400px;
+        width: 425px;
         height: 34px;
         font-size: 13px;
       }
@@ -70,12 +69,31 @@
       }
     }
 
+    #task-filters {
+      margin-top: 5px;
+      padding: 0 15px;
+
+      a.active {
+        cursor: default;
+        color: #CAC9C9;
+        text-decoration: none;
+      }
+
+      .filter-actions {
+        float:left;
+      }
+
+      .sorting-actions {
+        float:right;
+      }
+    }
+
     ul.tasks-list {
       margin-left: 0;
 
       > li {
         display: inline-block;
-        width: 464px;
+        width: 490px;
         padding: 5px 10px;
         border: solid #BDC4CA 1px;
 
@@ -86,7 +104,7 @@
         .note_content {
           float: left;
           margin-left: 5px;
-          width: 395px;
+          width: 425px;
 
           .due-date {
             display: inline-block;
