@@ -27,13 +27,13 @@ describe Api::TaskListsController do
       post :create, task_list: {name: "New tasks list"}, format: :json
     end
 
-    it "should return new task" do
+    it "should return new task list" do
       expect(json.kind_of?(Hash)).to be_true
       expect(json["id"].kind_of?(Integer)).to be_true
       expect(json["name"]).to eq "New tasks list"
     end
 
-    it "should save new task" do
+    it "should save new task list" do
       expect(TaskList.count).to eq 1
       expect(TaskList.first.name).to eq "New tasks list"
     end
