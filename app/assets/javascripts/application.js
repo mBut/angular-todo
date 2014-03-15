@@ -12,11 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require turbolinks
 
 //= require angular
 //= require angular-resource
 //= require angular-route
 
-//= require_tree .
+//= require ui-bootstrap-tpls
+
+//= require todo
+//= require_tree ./controllers
+//= require_tree ./services
+//= require_tree ./helpers
