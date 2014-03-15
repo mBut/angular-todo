@@ -10,7 +10,10 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
   $scope.initTasks = ->
     if $routeParams.listId
       @tasks_service = new Task($routeParams.listId, serverErrorHandler)
-      $scope.tasks = @tasks_service.all()
+      $scope.all_tasks = @tasks_service.all()
+
+  $scope.tasks_order_by = "note"
+  $scope.tasks_active_filter = "all"
 
   $scope.currentList = ->
     $filter('getById')($scope.task_lists, $routeParams.listId) if $routeParams.listId
@@ -26,7 +29,7 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
 
   $scope.createTask = () ->
     @tasks_service.create($scope.new_task, (task) ->
-      $scope.tasks.push(task)
+      $scope.all_tasks.push(task)
       $scope.new_task = null
     )
 
@@ -40,7 +43,22 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
 
     if result
       @tasks_service.delete(task)
-      $scope.tasks.splice($scope.tasks.indexOf(task), 1)
+      $scope.all_tasks.splice($scope.all_tasks.indexOf(task), 1)
+
+  $scope.filteredTasks = ->
+    switch $scope.tasks_active_filter
+      when 'active' then $filter('getByCompletedFlag')($scope.all_tasks, false)
+      when 'completed' then $filter('getByCompletedFlag')($scope.all_tasks, true)
+      else $scope.all_tasks
+
+  $scope.setActiveFilter = (filter) ->
+    $scope.tasks_active_filter = filter
+
+  $scope.activeTasks = ->
+    $filter('getByCompletedFlag')($scope.all_tasks, false)
+
+  $scope.completedTasks = ->
+    $filter('getByCompletedFlag')($scope.all_tasks, true)
 
   $scope.openDatapicker = (task, $event) ->
     $event.preventDefault()

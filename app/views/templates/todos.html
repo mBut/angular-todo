@@ -1,4 +1,5 @@
 <div class="row" ng-cloak ng-init="init()">
+
   <div id="task-lists">
     <form ng-submit="createList()">
       <input type="text" id="new-task-list" ng-model="new_list.name" placeholder="New Todo List..."/>
@@ -18,8 +19,37 @@
         <input type="submit" class="btn btn-primary" />
       </form>
 
+      <div class="row" id="task-filters">
+        <div class='filter-actions'>
+          <a href="#"
+             ng-click="setActiveFilter('all')"
+             ng-class="{active: tasks_active_filter=='all'}">
+            ({{all_tasks.length}}) all
+          </a>
+          &nbsp;|&nbsp;
+          <a href="#"
+             ng-click="setActiveFilter('active')"
+             ng-class="{active: tasks_active_filter=='active'}">
+            ({{activeTasks().length}}) active
+          </a>
+          &nbsp;|&nbsp;
+          <a href="#"
+             ng-click="setActiveFilter('completed')"
+             ng-class="{active: tasks_active_filter=='completed'}">
+            ({{completedTasks().length}}) completed
+          </a>
+        </div>
+
+        <div class='sorting-actions'>
+          sort by:
+          <a href="#" ng-click="tasks_order_by='name'; reverse=!reverse">note</a>
+          &nbsp;|&nbsp;
+          <a href="#" ng-click="tasks_order_by='due_date'; reverse=!reverse">due date</a>
+        </div>
+      </div>
+
       <ul class="tasks-list">
-        <li ng-repeat="task in tasks">
+        <li ng-repeat="task in filteredTasks() | orderBy:tasks_order_by:reverse ">
           <input type="checkbox"
                  class="complete_note"
                  id="complete_task_{{task.id}}"
