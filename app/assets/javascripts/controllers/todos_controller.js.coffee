@@ -22,16 +22,18 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
     $routeParams.listId?
 
   $scope.createList = () ->
-    @task_lists_service.create($scope.new_list, (task_list) ->
-      $scope.task_lists.push(task_list)
-      $scope.new_list = null
-    )
+    if $scope.new_list && $scope.new_list.name != undefined && $scope.new_list.name != ''
+      @task_lists_service.create($scope.new_list, (task_list) ->
+        $scope.task_lists.push(task_list)
+        $scope.new_list = null
+      )
 
   $scope.createTask = () ->
-    @tasks_service.create($scope.new_task, (task) ->
-      $scope.all_tasks.push(task)
-      $scope.new_task = null
-    )
+    if $scope.new_task && $scope.new_task.note != undefined && $scope.new_task.note != ''
+      @tasks_service.create($scope.new_task, (task) ->
+        $scope.all_tasks.push(task)
+        $scope.new_task = null
+      )
 
   $scope.updateTask = (task) ->
     @tasks_service.update task,

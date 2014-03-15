@@ -3,7 +3,7 @@
   <div id="task-lists">
     <form ng-submit="createList()">
       <input type="text" id="new-task-list" ng-model="new_list.name" placeholder="New Todo List..."/>
-      <input type="submit" class="btn btn-primary" />
+      <input type="submit" value="Add" ng-class="{'btn': true, 'btn-primary': true, 'disabled': new_list.name == undefined || new_list.name == ''}" />
     </form>
     <ul>
       <li ui-on-drop="moveTask($data, task_list)" ng-repeat="task_list in task_lists">
@@ -16,7 +16,7 @@
     <div ng-show="showTaskForm()">
       <form ng-submit="createTask()" >
         <input type="text" id="new-task" ng-model="new_task.note" placeholder="New {{currentList().name}} Todo item"/>
-        <input type="submit" class="btn btn-primary" />
+        <input type="submit" value="Add" ng-class="{'btn': true, 'btn-primary': true, 'disabled': new_task.note == undefined || new_task.note == ''}" />
       </form>
 
       <div class="row" id="task-filters">
