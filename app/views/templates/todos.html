@@ -19,7 +19,7 @@
         <input type="submit" value="Add" ng-class="{'btn': true, 'btn-primary': true, 'disabled': new_task.note == undefined || new_task.note == ''}" />
       </form>
 
-      <div class="row" id="task-filters">
+      <div class="row" ng-show="tasksPresent()" id="task-filters">
         <div class='filter-actions'>
           <a href="#"
              ng-click="setActiveFilter('all')"
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="row" id="search-task">
+      <div class="row" ng-show="tasksPresent()" id="search-task">
         <input type="text" ng-model="search" ng-change="searchTasks()" placeholder="Search tasks" />
       </div>
 
@@ -82,6 +82,7 @@
             </span>
           </div>
         </li>
+        <li class='no-tasks' ng-hide="tasksPresent()">This list looks empty :(</li>
       </ul>
 
       <div infinite-scroll="loadMoreTasks()" infinite-scroll-distance="1" infinite-scroll-disabled='no_next_page'></div>
