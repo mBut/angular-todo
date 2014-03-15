@@ -20,8 +20,21 @@
 
       <ul class="tasks-list">
         <li ng-repeat="task in tasks">
-          <input type="checkbox" value="{{task.completed_flag}}" />
-          <span class="note">{{task.note}}</span>
+          <input type="checkbox"
+                 class="complete_note"
+                 id="complete_task_{{task.id}}"
+                 value="{{task.completed_flag}}"
+                 ng-model="task.completed_flag"
+                 ng-change="toggleTask(task)" />
+
+          <div class="note_content">
+            <label for="complete_task_{{task.id}}">{{task.note}}</label>
+          </div>
+
+          <div class='action_buttons'>
+            <span class="btn btn-danger"><i class="icon-remove"></i></span>
+            <span class="btn btn-info"><i class="icon-calendar"></i></span>
+          </div>
         </li>
       </ul>
     </div>

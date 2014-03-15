@@ -7,7 +7,7 @@ AngularTodo::Application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :task_lists, only: [:index, :create] do
-      resources :tasks
+      resources :tasks, only: [:index, :create, :update]
     end
   end
 

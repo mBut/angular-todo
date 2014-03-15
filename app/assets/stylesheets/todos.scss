@@ -57,9 +57,34 @@
     }
 
     ul.tasks-list > li {
+      display: inline-block;
+      width: 455px;
       margin-top: 10px;
       padding: 5px 10px;
       border: solid #BDC4CA 1px;
+
+      input.complete_note {
+        float: left;
+      }
+
+      .note_content {
+        float: left;
+        margin-left: 5px;
+        width: 395px;
+      }
+
+      .action_buttons {
+        float: right;
+        width: 0;
+        margin-right: 5px;
+
+        .btn {
+          width: 12px;
+          margin-top: 2px;
+          line-height: 0;
+          padding: 2px 3px;
+        }
+      }
     }
 
     span.no-records {

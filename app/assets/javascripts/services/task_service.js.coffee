@@ -19,3 +19,6 @@ angular.module('AngularTodo').factory 'Task', ($resource, $http) ->
 
     create: (attrs, successHandler) ->
       new @service(task: attrs).$save ((list) -> successHandler(list)), @errorHandler
+
+    update: (task, attrs) ->
+      new @service(task: attrs).$update {id: task.id}, (-> null), @errorHandler
