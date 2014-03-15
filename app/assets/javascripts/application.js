@@ -20,6 +20,7 @@
 
 //= require angular-dragdrop
 //= require ui-bootstrap-tpls
+//= require ng-infinite-scroll
 
 //= require todo
 //= require_tree ./controllers
