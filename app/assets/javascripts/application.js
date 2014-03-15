@@ -18,6 +18,7 @@
 //= require angular-resource
 //= require angular-route
 
+//= require angular-dragdrop
 //= require ui-bootstrap-tpls
 
 //= require todo

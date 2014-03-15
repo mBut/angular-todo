@@ -6,7 +6,7 @@
       <input type="submit" class="btn btn-primary" />
     </form>
     <ul>
-      <li ng-repeat="task_list in task_lists">
+      <li ui-on-drop="moveTask($data, task_list)" ng-repeat="task_list in task_lists">
         <a ng-class="{active: task_list.id==currentList().id}" ng-href="/task_lists/{{task_list.id}}">{{task_list.name}}</a>
       </li>
     </ul>
@@ -49,7 +49,7 @@
       </div>
 
       <ul class="tasks-list">
-        <li ng-repeat="task in filteredTasks() | orderBy:tasks_order_by:reverse ">
+        <li ui-draggable="true" drag="task" ng-repeat="task in filteredTasks() | orderBy:tasks_order_by:reverse ">
           <input type="checkbox"
                  class="complete_note"
                  id="complete_task_{{task.id}}"

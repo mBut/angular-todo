@@ -25,7 +25,7 @@ class Api::TasksController < ApplicationController
   end
 
   def update_task_params
-    params.require(:task).permit(:note, :due_date, :completed_flag)
+    params.require(:task).permit(:note, :due_date, :completed_flag, :task_list_id)
   end
 
 end

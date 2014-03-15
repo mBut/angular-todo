@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AngularTodo', ['ngResource', 'ngRoute','ui.bootstrap'])
+angular.module('AngularTodo', ['ngResource', 'ngRoute','ui.bootstrap','ngDragDrop'])
   .config ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/task_lists',
