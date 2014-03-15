@@ -60,13 +60,19 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
 
         $scope.all_tasks.splice($scope.all_tasks.indexOf(task), 1)
 
+  $scope.searchTasks = ->
+    $scope.tasks_active_filter = "search"
+
   $scope.filteredTasks = ->
     switch $scope.tasks_active_filter
       when 'active' then $filter('getByCompletedFlag')($scope.all_tasks, false)
       when 'completed' then $filter('getByCompletedFlag')($scope.all_tasks, true)
+      when 'search' then $filter('getByNoteText')($scope.all_tasks, $scope.search)
       else $scope.all_tasks
 
   $scope.setActiveFilter = (filter) ->
+    # Clear search field and show all tasks
+    $scope.search = null
     $scope.tasks_active_filter = filter
 
   $scope.activeTasks = ->
