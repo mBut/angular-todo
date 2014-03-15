@@ -22,3 +22,6 @@ angular.module('AngularTodo').factory 'Task', ($resource, $http) ->
 
     update: (task, attrs) ->
       new @service(task: attrs).$update {id: task.id}, (-> null), @errorHandler
+
+    delete: (task) ->
+      new @service().$delete {id: task.id}, (-> null), @errorHandler

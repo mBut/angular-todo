@@ -35,6 +35,13 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
       completed_flag: task.completed_flag
       due_date: task.due_date
 
+  $scope.deleteTask = (task) ->
+    result = confirm "Are you sure you want to remove this task"
+
+    if result
+      @tasks_service.delete(task)
+      $scope.tasks.splice($scope.tasks.indexOf(task), 1)
+
   $scope.openDatapicker = (task, $event) ->
     $event.preventDefault()
     $event.stopPropagation()

@@ -14,6 +14,10 @@ class Api::TasksController < ApplicationController
     head :ok if task.update_attributes(update_task_params)
   end
 
+  def destroy
+    head :ok if Task.find(params[:id]).destroy
+  end
+
   protected
 
   def new_task_params
