@@ -45,6 +45,19 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
       @tasks_service.delete(task)
       $scope.all_tasks.splice($scope.all_tasks.indexOf(task), 1)
 
+  $scope.moveTask = ($data, task_list) ->
+    # As $data isn't instance of task service, then corresponded task should be found
+    task = $filter('getById')($scope.all_tasks, $data.id)
+
+    if task.task_list_id != task_list.id
+      result = confirm "Move task: "+ task.note + "\nTo list: " + task_list.name + " ?"
+
+      if result
+        @tasks_service.update task,
+          task_list_id: task_list.id
+
+        $scope.all_tasks.splice($scope.all_tasks.indexOf(task), 1)
+
   $scope.filteredTasks = ->
     switch $scope.tasks_active_filter
       when 'active' then $filter('getByCompletedFlag')($scope.all_tasks, false)
