@@ -48,6 +48,10 @@
         </div>
       </div>
 
+      <div class="row" id="search-task">
+        <input type="text" ng-model="search" ng-change="searchTasks()" placeholder="Search tasks" />
+      </div>
+
       <ul class="tasks-list">
         <li ui-draggable="true" drag="task" ng-repeat="task in filteredTasks() | orderBy:tasks_order_by:reverse ">
           <input type="checkbox"

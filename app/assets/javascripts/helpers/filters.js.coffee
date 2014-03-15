@@ -12,3 +12,13 @@ angular.module('AngularTodo').filter 'getByCompletedFlag', ->
         result.push(el)
 
     result
+
+angular.module('AngularTodo').filter 'getByNoteText', ->
+  (input, text) ->
+    result = []
+    for el in input
+      regex = new RegExp(text, "i");
+      if el.note.match(regex)
+        result.push(el)
+
+    result
