@@ -25,15 +25,25 @@
                  id="complete_task_{{task.id}}"
                  value="{{task.completed_flag}}"
                  ng-model="task.completed_flag"
-                 ng-change="toggleTask(task)" />
+                 ng-change="updateTask(task)" />
 
           <div class="note_content">
             <label for="complete_task_{{task.id}}">{{task.note}}</label>
+            <span class='due-date' ng-show='task.due_date'>
+              <b>Due date:</b> {{task.due_date | date:'fullDate'}}
+            </span>
           </div>
 
           <div class='action_buttons'>
-            <span class="btn btn-danger"><i class="icon-remove"></i></span>
-            <span class="btn btn-info"><i class="icon-calendar"></i></span>
+            <span class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></span>
+            <span class="btn btn-info"
+                  ng-click="openDatapicker(task, $event)"
+                  datepicker-popup
+                  ng-model="task.due_date"
+                  is-open="task.show_datapicker"
+                  ng-change="updateTask(task)">
+              <i class="glyphicon glyphicon-time"></i>
+            </span>
           </div>
         </li>
       </ul>

@@ -1,7 +1,5 @@
 #content {
-  .btn {
-    margin-left: -10px;
-  }
+  padding: 0;
 
   input {
     margin-bottom: 0;
@@ -9,7 +7,8 @@
 
   ul {
     list-style: none;
-    margin: 0 20px 10px 5px;
+    padding: 0;
+    margin: 10px 20px 10px 5px;
   }
 
   #task-lists {
@@ -17,9 +16,18 @@
     width: 260px;
     padding: 0 5px;
 
-    input#new-task-list {
-      width: 170px;
+    form {
+      input#new-task-list {
+        width: 170px;
+        height: 34px;
+        font-size: 13px;
+      }
+
+      .btn {
+        margin-left: -10px;
+      }
     }
+
 
     a {
       text-decoration: none;
@@ -48,41 +56,64 @@
     width: 480px;
     padding: 0 5px;
 
-    input#new-task {
-      width: 400px;
-    }
-
-    form, ul {
+    form {
       margin: 0;
+
+      input#new-task {
+        width: 400px;
+        height: 34px;
+        font-size: 13px;
+      }
+
+      .btn {
+        margin-left: -10px;
+      }
     }
 
-    ul.tasks-list > li {
-      display: inline-block;
-      width: 455px;
-      margin-top: 10px;
-      padding: 5px 10px;
-      border: solid #BDC4CA 1px;
+    ul.tasks-list {
+      margin-left: 0;
 
-      input.complete_note {
-        float: left;
+      > li {
+        display: inline-block;
+        width: 464px;
+        // margin-top: 10px;
+        padding: 5px 10px;
+        border: solid #BDC4CA 1px;
+
+        input.complete_note {
+          float: left;
+        }
+
+        .note_content {
+          float: left;
+          margin-left: 5px;
+          width: 395px;
+
+          .due-date {
+            display: inline-block;
+            width: 100%;
+            font-size: 11px;
+          }
+        }
+
+        .action_buttons {
+          float: right;
+          width: 20px;
+
+          > .btn {
+            margin-top: 2px;
+            padding: 2px 4px 0 4px;
+          }
+        }
       }
 
-      .note_content {
-        float: left;
-        margin-left: 5px;
-        width: 395px;
-      }
+      // Styling for datepicker
+      .dropdown-menu {
+        font-size: 10px !important;
 
-      .action_buttons {
-        float: right;
-        width: 0;
-        margin-right: 5px;
-
-        .btn {
-          width: 12px;
-          margin-top: 2px;
-          line-height: 0;
-          padding: 2px 3px;
+        .btn, .h6 {
+          font-size: 10px;
+          padding: 3px;
         }
       }
     }

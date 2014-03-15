@@ -30,8 +30,16 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
       $scope.new_task = null
     )
 
-  $scope.toggleTask = (task) ->
-    @tasks_service.update(task, completed_flag: task.completed_flag)
+  $scope.updateTask = (task) ->
+    @tasks_service.update task,
+      completed_flag: task.completed_flag
+      due_date: task.due_date
+
+  $scope.openDatapicker = (task, $event) ->
+    $event.preventDefault()
+    $event.stopPropagation()
+
+    task.show_datapicker = true
 
   serverErrorHandler = ->
     alert("There was a server error, please reload the page and try again.")
