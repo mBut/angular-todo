@@ -81,6 +81,21 @@ angular.module('AngularTodo').controller 'TodosCtrl', ($scope,$location,$routePa
   $scope.completedTasks = ->
     $filter('getByCompletedFlag')($scope.all_tasks, true)
 
+  # In the current infinite scroll implementation loadMoreTasks function calls when user reached bottom of the page
+  # loadMoreTasks sends request to server and merge responce tasks with existing.
+  # If tasks count in the response is less than defined in backend page size, then we disable the infinite scroll dirictive
+  $scope.next_page = 2
+  $scope.no_next_page = false
+
+  $scope.loadMoreTasks = ->
+    @tasks_service.getPage $scope.next_page, (result) ->
+      $scope.all_tasks = $scope.all_tasks.concat(result)
+
+      if result.length < 20
+        $scope.no_next_page = true
+      else
+        $scope.next_page++
+
   $scope.openDatapicker = (task, $event) ->
     $event.preventDefault()
     $event.stopPropagation()

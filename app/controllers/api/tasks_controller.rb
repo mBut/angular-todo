@@ -1,7 +1,10 @@
 class Api::TasksController < ApplicationController
 
+  TASKS_PER_PAGE = 20
+
   def index
-    @tasks = Task.where(task_list_id: params[:task_list_id])
+    page = params[:page] || 1
+    @tasks = Task.where(task_list_id: params[:task_list_id]).paginate(page: page, per_page: TASKS_PER_PAGE)
   end
 
   def create

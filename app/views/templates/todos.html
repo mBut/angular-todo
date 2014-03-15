@@ -83,6 +83,9 @@
           </div>
         </li>
       </ul>
+
+      <div infinite-scroll="loadMoreTasks()" infinite-scroll-distance="1" infinite-scroll-disabled='no_next_page'></div>
+
     </div>
 
     <span ng-hide="showTaskForm()" class="no-records">Select task list to start create and browse tasks</span>
