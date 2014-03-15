@@ -11,6 +11,10 @@ class Api::TaskListsController < ApplicationController
     @task_list = TaskList.create!(new_list_params)
   end
 
+  def tasks
+    @tasks = TaskList.find(params[:task_list_id]).tasks
+  end
+
   protected
 
   def new_list_params

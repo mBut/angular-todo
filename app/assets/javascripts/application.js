@@ -22,3 +22,4 @@
 //= require todo
 //= require_tree ./controllers
 //= require_tree ./services
+//= require_tree ./helpers

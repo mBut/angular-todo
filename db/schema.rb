@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312200319) do
+ActiveRecord::Schema.define(version: 20140314212106) do
 
   create_table "task_lists", force: true do |t|
     t.string "name"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.integer  "task_list_id"
+    t.string   "note"
+    t.boolean  "completed_flag", default: false
+    t.datetime "due_date"
   end
 
 end

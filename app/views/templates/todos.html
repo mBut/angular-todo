@@ -1,15 +1,31 @@
 <div class="row" ng-cloak ng-init="init()">
   <div id="task-lists">
-    <form ng-submit="create_list()">
-      <input type="text" class="text" id="new-task-list" ng-model="new_list.name" placeholder="New Todo List..."/>
+    <form ng-submit="createList()">
+      <input type="text" id="new-task-list" ng-model="new_list.name" placeholder="New Todo List..."/>
       <input type="submit" class="btn btn-primary" />
     </form>
     <ul>
       <li ng-repeat="task_list in task_lists">
-        <a href="task_lists/{{task_list.id}}">{{task_list.name}}</a>
+        <a ng-class="{active: task_list.id==currentList().id}" ng-href="/task_lists/{{task_list.id}}">{{task_list.name}}</a>
       </li>
     </ul>
   </div>
 
-  <div id="todos_list">Task will be here...soon</div>
+  <div id="todos_list">
+    <div ng-show="showTaskForm()">
+      <form ng-submit="createTask()" >
+        <input type="text" id="new-task" ng-model="new_task.note" placeholder="New {{currentList().name}} Todo item"/>
+        <input type="submit" class="btn btn-primary" />
+      </form>
+
+      <ul class="tasks-list">
+        <li ng-repeat="task in tasks">
+          <input type="checkbox" value="{{task.completed_flag}}" />
+          <span class="note">{{task.note}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <span ng-hide="showTaskForm()" class="no-records">Select task list to start create and browse tasks</span>
+  </div>
 </div>

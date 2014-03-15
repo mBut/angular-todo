@@ -3,7 +3,7 @@
 angular.module('AngularTodo').factory 'TaskList', ($resource, $http) ->
   class TaskList
     constructor: (errorHandler) ->
-      @service = $resource('api/task_lists/:id',
+      @service = $resource('/api/task_lists/:id',
         {id: '@id'},
         {update: {method: 'PATCH'}}
       )

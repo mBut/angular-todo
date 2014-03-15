@@ -4,7 +4,10 @@ angular.module('AngularTodo', ['ngResource', 'ngRoute'])
   .config ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/task_lists',
-        templateUrl: 'templates/todos',
+        templateUrl: '/templates/todos',
+        controller: 'TodosCtrl'
+      .when '/task_lists/:listId',
+        templateUrl: '/templates/todos',
         controller: 'TodosCtrl'
       .otherwise
         redirectTo: '/task_lists'

@@ -1,15 +1,10 @@
-#task-lists {
-  float: left;
-  width: 260px;
-  padding: 0 5px;
-
-  input#new-task-list {
-    width: 170px;
-    margin-bottom: 0;
-  }
-
+#content {
   .btn {
     margin-left: -10px;
+  }
+
+  input {
+    margin-bottom: 0;
   }
 
   ul {
@@ -17,30 +12,60 @@
     margin: 0 20px 10px 5px;
   }
 
-  a {
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    margin-bottom: 4px;
-    font-size: 15px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+  #task-lists {
+    float: left;
+    width: 260px;
+    padding: 0 5px;
 
-    &.active {
-      background: #08C;
-      color: #fff;
+    input#new-task-list {
+      width: 170px;
     }
 
-    &:hover {
-      background: #55C3FA;
-      color: #fff;
+    a {
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      margin-bottom: 4px;
+      font-size: 15px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+
+      &:hover {
+        background: #55C3FA;
+        color: #fff;
+      }
+
+      &.active {
+        background: #08C;
+        color: #fff;
+      }
     }
   }
-}
 
-#todos_list {
-  float: left;
-  width: 480px;
-  padding: 0 5px;
+  #todos_list {
+    float: left;
+    width: 480px;
+    padding: 0 5px;
+
+    input#new-task {
+      width: 400px;
+    }
+
+    form, ul {
+      margin: 0;
+    }
+
+    ul.tasks-list > li {
+      margin-top: 10px;
+      padding: 5px 10px;
+      border: solid #BDC4CA 1px;
+    }
+
+    span.no-records {
+      font-weight: bold;
+      font-size: 20px;
+      color: #A3A3A3;
+    }
+  }
 }
