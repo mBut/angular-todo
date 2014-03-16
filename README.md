@@ -3,7 +3,7 @@ Angular and Rails demo application based on [todo-rails4-angularjs](https://gith
 #### [Demo on Heroku](http://floating-basin-2810.herokuapp.com/)
 
 ### How to start
-=======
+-------
 To clone and run the project Git and Ruby(with RVM) should be preinstalled in the system
 
 Clone project
