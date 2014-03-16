@@ -24,6 +24,8 @@ gem 'will_paginate', '~> 3.0'
 gem 'jquery-rails'
 gem 'angularjs-rails', '~> 1.2.14'
 
+gem 'devise'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'

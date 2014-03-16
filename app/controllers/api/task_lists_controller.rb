@@ -4,15 +4,15 @@ class Api::TaskListsController < ApplicationController
   # what gives possibility to create more flexible JSON objects
 
   def index
-    @task_lists = TaskList.all
+    @task_lists = current_user.task_lists.all
   end
 
   def create
-    @task_list = TaskList.create!(new_list_params)
+    @task_list = current_user.task_lists.create!(new_list_params)
   end
 
   def tasks
-    @tasks = TaskList.find(params[:task_list_id]).tasks
+    @tasks = current_user.task_lists.find(params[:task_list_id]).tasks
   end
 
   protected

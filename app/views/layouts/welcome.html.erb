@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="AngularTodo">
+<head>
+  <title>AngularTodo</title>
+  <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container" id="devise-forms">
+    <div class='float-center'>
+      <h2>Angular Todo App</h2>
+
+      <% if alert %>
+        <div class="alert alert-danger"><%= alert %></div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

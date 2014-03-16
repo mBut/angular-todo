@@ -12,7 +12,12 @@
  *= require_tree .
  */
 
-#content {
-  max-width: 730px;
-  margin-top: 30px;
+#devise-forms .float-center {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+#devise-forms input {
+  margin-bottom: 10px;
 }

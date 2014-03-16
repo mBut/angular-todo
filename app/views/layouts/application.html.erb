@@ -9,6 +9,16 @@
 </head>
 <body>
   <div id="content" class="container">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
     <%= yield %>
   </div>
 </body>
