@@ -4,21 +4,21 @@ class Api::TasksController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @tasks = Task.where(task_list_id: params[:task_list_id]).paginate(page: page, per_page: TASKS_PER_PAGE)
+    @tasks = current_user.tasks.where(task_list_id: params[:task_list_id]).paginate(page: page, per_page: TASKS_PER_PAGE)
   end
 
   def create
-    task_list = TaskList.find(params[:task_list_id])
-    @task = task_list.tasks.create!(new_task_params)
+    task_list = current_user.task_lists.find(params[:task_list_id])
+    @task = task_list.tasks.create!(new_task_params.merge({user_id: current_user.id}))
   end
 
   def update
-    task = Task.find(params[:id])
+    task = current_user.tasks.find(params[:id])
     head :ok if task.update_attributes(update_task_params)
   end
 
   def destroy
-    head :ok if Task.find(params[:id]).destroy
+    head :ok if current_user.tasks.find(params[:id]).destroy
   end
 
   protected
