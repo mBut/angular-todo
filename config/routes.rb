@@ -1,4 +1,5 @@
 AngularTodo::Application.routes.draw do
+  devise_for :users, :skip => [:confirmations, :unlocks, :passwords]
   root "todo#index"
 
   # Any task_lists routes render page with AngularTodo application
